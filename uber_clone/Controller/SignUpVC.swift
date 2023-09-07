@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpVC: UIViewController {
 
@@ -75,7 +76,7 @@ class SignUpVC: UIViewController {
         return button
     }()
     
-    private let loginButton: UIButton = { [`self` = ViewController.self] in
+    private let loginButton: UIButton = {
         let button = UIButton(type: .system)
         
         let attributedTitle = NSMutableAttributedString(
@@ -110,6 +111,38 @@ class SignUpVC: UIViewController {
     }
     
     @objc func handleSignUpButton() {
+        
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullName = fullNameTextField.text else { return }
+        let accountType = accountSegmentedControl.selectedSegmentIndex
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            
+            if let error {
+                print("Failed to register user with error: \(error)")
+                return
+            }
+            
+            guard let uid = result?.user.uid else { return }
+            
+            let userValue: [String: Any] = [
+                "email": email,
+                "fullName": fullName,
+                "accountType": accountType
+            ]
+            Database.database().reference()
+                .child("users")
+                .child(uid)
+                .updateChildValues(userValue) { error, ref in
+                    if let error {
+                        print("Failed to add user information to data base: \(error)")
+                        return
+                    }
+                    
+                    print("Successfully registered user in...")
+                    self.dismiss(animated: true)
+                }
+        }
         
     }
     

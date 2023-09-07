@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Firebase
 
-class ViewController: UIViewController {
+class LoginVC: UIViewController {
 
     //MARK: - Properties
-    
+     
     private let titleLbl: UILabel = {
         let label = UILabel()
         label.text = "UBER"
@@ -43,11 +44,10 @@ class ViewController: UIViewController {
         let button = AuthButton(type: .system)
         button.setTitle("Log In", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
-
         return button
     }()
     
-    private let createAccountButton: UIButton = { [`self` = ViewController.self] in
+    private let createAccountButton: UIButton = {
         let button = UIButton(type: .system)
         
         let attributedTitle = NSMutableAttributedString(
@@ -86,6 +86,20 @@ class ViewController: UIViewController {
     
     @objc func handleLogInButton() {
         
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error {
+                print("Failed to log in with error: \(error.localizedDescription)")
+                return
+            }
+            
+            print("Successfully logged user in...")
+            guard let home = UIApplication.shared.keyWindow?.rootViewController as? HomeVC else { return }
+            home.setupUI()
+            self.dismiss(animated: true)
+        }
     }
     
     @objc func handleSignUpButton() {
