@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CA32AA8F1A700EC85D2 /* AppDelegate.swift */; };
+		DB5E3CA82AA8F1A700EC85D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CA72AA8F1A700EC85D2 /* ViewController.swift */; };
+		DB5E3CAD2AA8F1A800EC85D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5E3CAC2AA8F1A800EC85D2 /* Assets.xcassets */; };
+		DB5E3CB02AA8F1A800EC85D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5E3CAE2AA8F1A800EC85D2 /* LaunchScreen.storyboard */; };
+		DB5E3CBD2AA8F73500EC85D2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CBC2AA8F73500EC85D2 /* Extensions.swift */; };
+		DB5E3CBF2AA9A17000EC85D2 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CBE2AA9A17000EC85D2 /* SignUpVC.swift */; };
+		DB5E3CC12AA9AB8C00EC85D2 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DB5E3CA02AA8F1A700EC85D2 /* uber_clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uber_clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB5E3CA32AA8F1A700EC85D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DB5E3CA72AA8F1A700EC85D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DB5E3CAC2AA8F1A800EC85D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DB5E3CAF2AA8F1A800EC85D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DB5E3CB12AA8F1A800EC85D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB5E3CBC2AA8F73500EC85D2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DB5E3CBE2AA9A17000EC85D2 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB5E3C9D2AA8F1A700EC85D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB5E3C972AA8F1A700EC85D2 = {
+			isa = PBXGroup;
+			children = (
+				DB5E3CA22AA8F1A700EC85D2 /* uber_clone */,
+				DB5E3CA12AA8F1A700EC85D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB5E3CA12AA8F1A700EC85D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB5E3CA02AA8F1A700EC85D2 /* uber_clone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB5E3CA22AA8F1A700EC85D2 /* uber_clone */ = {
+			isa = PBXGroup;
+			children = (
+				DB5E3CA32AA8F1A700EC85D2 /* AppDelegate.swift */,
+				DB5E3CBB2AA8F60F00EC85D2 /* Model */,
+				DB5E3CBA2AA8F60D00EC85D2 /* View */,
+				DB5E3CB92AA8F60B00EC85D2 /* Controller */,
+				DB5E3CB82AA8F60900EC85D2 /* Service */,
+				DB5E3CB72AA8F60700EC85D2 /* Utils */,
+				DB5E3CAC2AA8F1A800EC85D2 /* Assets.xcassets */,
+				DB5E3CAE2AA8F1A800EC85D2 /* LaunchScreen.storyboard */,
+				DB5E3CB12AA8F1A800EC85D2 /* Info.plist */,
+			);
+			path = uber_clone;
+			sourceTree = "<group>";
+		};
+		DB5E3CB72AA8F60700EC85D2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DB5E3CB82AA8F60900EC85D2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DB5E3CBC2AA8F73500EC85D2 /* Extensions.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DB5E3CB92AA8F60B00EC85D2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DB5E3CA72AA8F1A700EC85D2 /* ViewController.swift */,
+				DB5E3CBE2AA9A17000EC85D2 /* SignUpVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DB5E3CBA2AA8F60D00EC85D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB5E3CBB2AA8F60F00EC85D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DB5E3C9F2AA8F1A700EC85D2 /* uber_clone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB5E3CB42AA8F1A800EC85D2 /* Build configuration list for PBXNativeTarget "uber_clone" */;
+			buildPhases = (
+				DB5E3C9C2AA8F1A700EC85D2 /* Sources */,
+				DB5E3C9D2AA8F1A700EC85D2 /* Frameworks */,
+				DB5E3C9E2AA8F1A700EC85D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = uber_clone;
+			productName = uber_clone;
+			productReference = DB5E3CA02AA8F1A700EC85D2 /* uber_clone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB5E3C982AA8F1A700EC85D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					DB5E3C9F2AA8F1A700EC85D2 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = DB5E3C9B2AA8F1A700EC85D2 /* Build configuration list for PBXProject "uber_clone" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DB5E3C972AA8F1A700EC85D2;
+			productRefGroup = DB5E3CA12AA8F1A700EC85D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB5E3C9F2AA8F1A700EC85D2 /* uber_clone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB5E3C9E2AA8F1A700EC85D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB5E3CB02AA8F1A800EC85D2 /* LaunchScreen.storyboard in Resources */,
+				DB5E3CAD2AA8F1A800EC85D2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB5E3C9C2AA8F1A700EC85D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB5E3CBF2AA9A17000EC85D2 /* SignUpVC.swift in Sources */,
+				DB5E3CC12AA9AB8C00EC85D2 /* AuthButton.swift in Sources */,
+				DB5E3CA82AA8F1A700EC85D2 /* ViewController.swift in Sources */,
+				DB5E3CBD2AA8F73500EC85D2 /* Extensions.swift in Sources */,
+				DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DB5E3CAE2AA8F1A800EC85D2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB5E3CAF2AA8F1A800EC85D2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB5E3CB22AA8F1A800EC85D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DB5E3CB32AA8F1A800EC85D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB5E3CB52AA8F1A800EC85D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47RPN39M4B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uber_clone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "muslim-erkinovich.uber-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DB5E3CB62AA8F1A800EC85D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47RPN39M4B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uber_clone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "muslim-erkinovich.uber-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB5E3C9B2AA8F1A700EC85D2 /* Build configuration list for PBXProject "uber_clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB5E3CB22AA8F1A800EC85D2 /* Debug */,
+				DB5E3CB32AA8F1A800EC85D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB5E3CB42AA8F1A800EC85D2 /* Build configuration list for PBXNativeTarget "uber_clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB5E3CB52AA8F1A800EC85D2 /* Debug */,
+				DB5E3CB62AA8F1A800EC85D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB5E3C982AA8F1A700EC85D2 /* Project object */;
+}
