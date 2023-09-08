@@ -13,16 +13,16 @@ class HomeVC: UIViewController {
 
     //MARK: - Properties
     
-    private var mapView: MKMapView?
+    private let mapView = MKMapView()
+    private let locationManager = CLLocationManager()
     
     //MARK: - Life Cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .backgroundColor
         checkIfUserIsLoggedIn()
-        signOut()
+        enableLocationServices()
     }
 
 
@@ -45,10 +45,15 @@ class HomeVC: UIViewController {
     }
     
     func setupUI() {
+        setupMapView()
+    }
+    
+    func setupMapView() {
+        mapView.frame = view.frame
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
         
-        mapView = MKMapView()
-        mapView?.frame = view.frame
-        view.addSubview(mapView!)
+        view.addSubview(mapView)
     }
     
     func signOut() {
@@ -58,4 +63,35 @@ class HomeVC: UIViewController {
             print(error)
         }
     }
+}
+
+extension HomeVC: CLLocationManagerDelegate {
+    
+    func enableLocationServices() {
+        
+        locationManager.delegate = self
+        
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            print("DEBUG: notDetermined")
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            print("DEBUG: restricted, denied")
+        case .authorizedAlways:
+            print("DEBUG: authorizedAlways")
+        case .authorizedWhenInUse:
+            print("DEBUG: authorizedWhenInUse")
+            locationManager.requestAlwaysAuthorization()
+        @unknown default:
+            print("DEBUG: default")
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        
+        if manager.authorizationStatus == .authorizedWhenInUse {
+            manager.requestAlwaysAuthorization()
+        }
+    }
+    
 }

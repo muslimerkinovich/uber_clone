@@ -140,6 +140,14 @@ class SignUpVC: UIViewController {
                     }
                     
                     print("Successfully registered user in...")
+                    guard let keyWindow = UIApplication.shared.connectedScenes
+                        .filter({$0.activationState == .foregroundActive})
+                        .compactMap({$0 as? UIWindowScene})
+                        .first?.windows
+                        .filter({$0.isKeyWindow}).first else { return }
+                    guard let home = keyWindow.rootViewController as? HomeVC else { return }
+                    
+                    home.setupUI()
                     self.dismiss(animated: true)
                 }
         }
