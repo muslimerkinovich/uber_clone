@@ -22,7 +22,7 @@ class HomeVC: UIViewController {
     
     //MARK: - Properties
     
-    private let locationManager = CLLocationManager()
+    private let locationManager = LocationManager.shared.locationManager
     
     private var user: User? {
         didSet {
@@ -35,8 +35,15 @@ class HomeVC: UIViewController {
 
         // Do any additional setup after loading the view.
         checkIfUserIsLoggedIn()
+//        signOut()
         enableLocationServices()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         fetchUserData()
+        fetchDrivers()
     }
 
 
@@ -58,9 +65,51 @@ class HomeVC: UIViewController {
         }
     }
     
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            DispatchQueue.main.async {
+                let vc = LoginVC()
+                let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func fetchUserData() {
-        Service.shared.fetchUserData { user in
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Service.shared.fetchUserData(uid: uid) { user in
             self.user = user
+        }
+    }
+    
+    func fetchDrivers() {
+        
+        guard let location = locationManager?.location else { return }
+        Service.shared.fetchDrivers(location: location) { driver in
+            
+            guard let coordinate = driver.location?.coordinate else { return }
+            
+            let annotation = DriverAnnotation(coordinate: coordinate, uid: driver.uid)
+            
+            var driverIsVisible: Bool {
+                return self.mapView.annotations.contains { annotation in
+                    guard let annotation = annotation as? DriverAnnotation else { return false }
+                    
+                    if driver.uid == annotation.uid {
+                        annotation.updateDriverPosition(withCoordinate: driver.location!.coordinate)
+                        return true
+                    }
+                    return false
+                }
+            }
+            
+            if !driverIsVisible {
+                self.mapView.addAnnotation(annotation)
+            }
         }
     }
     
@@ -86,7 +135,7 @@ class HomeVC: UIViewController {
         mapView.frame = view.frame
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
-        
+        mapView.delegate = self
         view.addSubview(mapView)
     }
     
@@ -132,41 +181,46 @@ class HomeVC: UIViewController {
         
     }
     
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error)
-        }
-    }
+    
 }
+
+//MARK: - Location Manager Delegate
 
 extension HomeVC: CLLocationManagerDelegate {
     
     func enableLocationServices() {
-        
-        locationManager.delegate = self
-        
-        switch locationManager.authorizationStatus {
+        switch locationManager?.authorizationStatus {
         case .notDetermined:
             print("DEBUG: notDetermined")
-            locationManager.requestWhenInUseAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
         case .restricted, .denied:
             print("DEBUG: restricted, denied")
         case .authorizedAlways:
             print("DEBUG: authorizedAlways")
         case .authorizedWhenInUse:
             print("DEBUG: authorizedWhenInUse")
-            locationManager.requestAlwaysAuthorization()
-        @unknown default:
+            locationManager?.requestAlwaysAuthorization()
+        default:
             print("DEBUG: default")
         }
     }
+}
+
+//MARK: - MapView  Delegate
+
+extension HomeVC: MKMapViewDelegate {
     
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if manager.authorizationStatus == .authorizedWhenInUse {
-            manager.requestAlwaysAuthorization()
+    func mapView(_ mapView: MKMapView,
+                 viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if let annotation = annotation as? DriverAnnotation {
+            
+            let view = MKAnnotationView(annotation: annotation, reuseIdentifier: DriverAnnotation.identifier)
+            view.image = UIImage(named: "chevron_right")
+            
+            return view
         }
+        return nil
     }
 }
 
@@ -229,6 +283,4 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return section == 0 ? .leastNormalMagnitude : .greatestFiniteMagnitude
     }
-    
-    
 }

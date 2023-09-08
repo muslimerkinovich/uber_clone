@@ -7,10 +7,11 @@
 
 import UIKit
 import Firebase
+import GeoFire
 
 class SignUpVC: UIViewController {
 
-    //MARK: - Properties
+    //MARK: - UI Properties
     
     private let titleLbl: UILabel = {
         let label = UILabel()
@@ -51,7 +52,7 @@ class SignUpVC: UIViewController {
     private let emailTextField: UITextField = .init(withPlaceholder: "Email", isSecuryEntry: false)
     
     private let fullNameTextField: UITextField = {
-        UITextField().textfield(withPlaceholder: "Full Name", isSecuryEntry: true)
+        UITextField().textfield(withPlaceholder: "Full Name", isSecuryEntry: false)
     }()
     
     private let passwordTextField: UITextField = {
@@ -96,6 +97,10 @@ class SignUpVC: UIViewController {
         return button
     }()
     
+    //MARK: - Properties
+    
+    var location = LocationManager.shared.locationManager.location
+    
     //MARK: - Life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,28 +135,52 @@ class SignUpVC: UIViewController {
                 "fullName": fullName,
                 "accountType": accountType
             ]
-            Database.database().reference()
-                .child("users")
-                .child(uid)
-                .updateChildValues(userValue) { error, ref in
+            
+            if accountType == 1 {
+                
+                let geoFire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+                guard let location = self.location else { return }
+                geoFire.setLocation(location, forKey: uid) { error in
+                    
                     if let error {
-                        print("Failed to add user information to data base: \(error)")
+                        print("DEBUG: Failed while setting driver location with error: ", error)
                         return
                     }
                     
-                    print("Successfully registered user in...")
-                    guard let keyWindow = UIApplication.shared.connectedScenes
-                        .filter({$0.activationState == .foregroundActive})
-                        .compactMap({$0 as? UIWindowScene})
-                        .first?.windows
-                        .filter({$0.isKeyWindow}).first else { return }
-                    guard let home = keyWindow.rootViewController as? HomeVC else { return }
-                    
-                    home.setupUI()
-                    self.dismiss(animated: true)
+                    self.uploadUserDataAndReturnHome(uid: uid, userData: userValue)
                 }
+                
+            }
+            
+            self.uploadUserDataAndReturnHome(uid: uid, userData: userValue)
+            
         }
         
+    }
+    
+    //MARK: - API Functions
+    
+    func uploadUserDataAndReturnHome(uid: String, userData: [String: Any]) {
+        Database.database().reference()
+            .child("users")
+            .child(uid)
+            .updateChildValues(userData) { error, ref in
+                if let error {
+                    print("Failed to add user information to data base: \(error)")
+                    return
+                }
+                
+                print("Successfully registered user in...")
+                guard let keyWindow = UIApplication.shared.connectedScenes
+                    .filter({$0.activationState == .foregroundActive})
+                    .compactMap({$0 as? UIWindowScene})
+                    .first?.windows
+                    .filter({$0.isKeyWindow}).first else { return }
+                guard let home = keyWindow.rootViewController as? HomeVC else { return }
+                
+                home.setupUI()
+                self.dismiss(animated: true)
+            }
     }
     
     //MARK: - SetupFunctions

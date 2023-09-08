@@ -13,6 +13,8 @@
 		DB2B9C982AAB98050083961B /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C972AAB98050083961B /* LocationCell.swift */; };
 		DB2B9C9A2AABA0B30083961B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C992AABA0B30083961B /* Service.swift */; };
 		DB2B9C9C2AABA3D10083961B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C9B2AABA3D10083961B /* User.swift */; };
+		DB2B9C9E2AABA99A0083961B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C9D2AABA99A0083961B /* LocationManager.swift */; };
+		DB2B9CA02AABB4E60083961B /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C9F2AABB4E60083961B /* DriverAnnotation.swift */; };
 		DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CA32AA8F1A700EC85D2 /* AppDelegate.swift */; };
 		DB5E3CA82AA8F1A700EC85D2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CA72AA8F1A700EC85D2 /* LoginVC.swift */; };
 		DB5E3CAD2AA8F1A800EC85D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5E3CAC2AA8F1A800EC85D2 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		DB2B9C972AAB98050083961B /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		DB2B9C992AABA0B30083961B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = uber_clone/View/Service.swift; sourceTree = SOURCE_ROOT; };
 		DB2B9C9B2AABA3D10083961B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DB2B9C9D2AABA99A0083961B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		DB2B9C9F2AABB4E60083961B /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		DB5E3CA02AA8F1A700EC85D2 /* uber_clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uber_clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5E3CA32AA8F1A700EC85D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB5E3CA72AA8F1A700EC85D2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				DB5E3CBC2AA8F73500EC85D2 /* Extensions.swift */,
+				DB2B9C9D2AABA99A0083961B /* LocationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				DB2B9C9B2AABA3D10083961B /* User.swift */,
+				DB2B9C9F2AABB4E60083961B /* DriverAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB2B9CA02AABB4E60083961B /* DriverAnnotation.swift in Sources */,
 				DB5E3CBF2AA9A17000EC85D2 /* SignUpVC.swift in Sources */,
 				DB5E3CC12AA9AB8C00EC85D2 /* AuthButton.swift in Sources */,
 				DB5E3CA82AA8F1A700EC85D2 /* LoginVC.swift in Sources */,
@@ -278,6 +285,7 @@
 				DB2B9C942AAB7F9C0083961B /* LocationInputActivationView.swift in Sources */,
 				DB2B9C982AAB98050083961B /* LocationCell.swift in Sources */,
 				DB2B9C9A2AABA0B30083961B /* Service.swift in Sources */,
+				DB2B9C9E2AABA99A0083961B /* LocationManager.swift in Sources */,
 				DB2B9C962AAB87160083961B /* LocationInputView.swift in Sources */,
 				DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */,
 				DB2B9C9C2AABA3D10083961B /* User.swift in Sources */,
