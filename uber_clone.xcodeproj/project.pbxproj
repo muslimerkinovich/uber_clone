@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CDF0CD904BE3B6FC17036C3D /* Pods_uber_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F58603C0FC105655958963 /* Pods_uber_clone.framework */; };
+		DB2B9C942AAB7F9C0083961B /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C932AAB7F9C0083961B /* LocationInputActivationView.swift */; };
+		DB2B9C962AAB87160083961B /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C952AAB87160083961B /* LocationInputView.swift */; };
+		DB2B9C982AAB98050083961B /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C972AAB98050083961B /* LocationCell.swift */; };
+		DB2B9C9A2AABA0B30083961B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C992AABA0B30083961B /* Service.swift */; };
+		DB2B9C9C2AABA3D10083961B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B9C9B2AABA3D10083961B /* User.swift */; };
 		DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CA32AA8F1A700EC85D2 /* AppDelegate.swift */; };
 		DB5E3CA82AA8F1A700EC85D2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CA72AA8F1A700EC85D2 /* LoginVC.swift */; };
 		DB5E3CAD2AA8F1A800EC85D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5E3CAC2AA8F1A800EC85D2 /* Assets.xcassets */; };
@@ -23,6 +28,11 @@
 		4F1C215D32D968023C07099F /* Pods-uber_clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uber_clone.release.xcconfig"; path = "Target Support Files/Pods-uber_clone/Pods-uber_clone.release.xcconfig"; sourceTree = "<group>"; };
 		55F58603C0FC105655958963 /* Pods_uber_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uber_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2CC74003D4DF4631AE2A0D /* Pods-uber_clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uber_clone.debug.xcconfig"; path = "Target Support Files/Pods-uber_clone/Pods-uber_clone.debug.xcconfig"; sourceTree = "<group>"; };
+		DB2B9C932AAB7F9C0083961B /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
+		DB2B9C952AAB87160083961B /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
+		DB2B9C972AAB98050083961B /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		DB2B9C992AABA0B30083961B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Service.swift; path = uber_clone/View/Service.swift; sourceTree = SOURCE_ROOT; };
+		DB2B9C9B2AABA3D10083961B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB5E3CA02AA8F1A700EC85D2 /* uber_clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uber_clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5E3CA32AA8F1A700EC85D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB5E3CA72AA8F1A700EC85D2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -111,6 +121,7 @@
 		DB5E3CB82AA8F60900EC85D2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DB2B9C992AABA0B30083961B /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -129,6 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */,
+				DB2B9C932AAB7F9C0083961B /* LocationInputActivationView.swift */,
+				DB2B9C952AAB87160083961B /* LocationInputView.swift */,
+				DB2B9C972AAB98050083961B /* LocationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +150,7 @@
 		DB5E3CBB2AA8F60F00EC85D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DB2B9C9B2AABA3D10083961B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,7 +275,12 @@
 				DB5E3CA82AA8F1A700EC85D2 /* LoginVC.swift in Sources */,
 				DBC1B80E2AA9BAA800D83899 /* HomeVC.swift in Sources */,
 				DB5E3CBD2AA8F73500EC85D2 /* Extensions.swift in Sources */,
+				DB2B9C942AAB7F9C0083961B /* LocationInputActivationView.swift in Sources */,
+				DB2B9C982AAB98050083961B /* LocationCell.swift in Sources */,
+				DB2B9C9A2AABA0B30083961B /* Service.swift in Sources */,
+				DB2B9C962AAB87160083961B /* LocationInputView.swift in Sources */,
 				DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */,
+				DB2B9C9C2AABA3D10083961B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

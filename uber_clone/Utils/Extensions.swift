@@ -20,7 +20,7 @@ extension UIColor {
 }
 
 extension UIView {
-    
+    // for textfields
     convenience init(withImage image: UIImage?, textField: UITextField) {
         
         self.init()
@@ -101,6 +101,7 @@ extension UIView {
         return view
     }
     
+    // for all
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
                 bottom: NSLayoutYAxisAnchor? = nil,
@@ -139,16 +140,47 @@ extension UIView {
         }
     }
     
-    func centerX(inView view: UIView) {
+    func centerX(inView view: UIView,
+                 constant: CGFloat = 0,
+                 top: NSLayoutYAxisAnchor? = nil,
+                 topPadding: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
-        centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        centerXAnchor.constraint(equalTo: view.centerXAnchor,
+                                 constant: constant).isActive = true
+        
+        if let top {
+            topAnchor.constraint(equalTo: top,
+                                 constant: topPadding).isActive = true
+        }
+        
     }
     
-    func centerY(inView view: UIView) {
+    func centerY(inView view: UIView,
+                 constant: CGFloat = 0,
+                 left: NSLayoutXAxisAnchor? = nil,
+                 leftPadding: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
-        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        centerYAnchor.constraint(equalTo: view.centerYAnchor,
+                                 constant: constant).isActive = true
+        
+        if let left {
+            leftAnchor.constraint(equalTo: left,
+                                  constant: leftPadding).isActive = true
+        }
     }
     
+    func setDimensions(widht: CGFloat,
+                       height: CGFloat) {
+        widthAnchor.constraint(equalToConstant: widht).isActive = true
+        heightAnchor.constraint(equalToConstant: height).isActive = true
+    }
+    
+    func addShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+    }
 }
 
 
