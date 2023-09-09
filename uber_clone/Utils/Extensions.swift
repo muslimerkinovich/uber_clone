@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 extension UIColor {
     
@@ -220,5 +221,20 @@ extension UITextField {
                 NSAttributedString.Key.foregroundColor: UIColor.lightGray
             ])
         
+    }
+}
+
+
+extension MKPlacemark {
+    
+    var address: String? {
+        get {
+            guard let subThoroughfare else { return nil }
+            guard let thoroughfare else { return nil }
+            guard let locality else { return nil }
+            guard let administrativeArea else { return nil }
+            
+            return "\(subThoroughfare), \(thoroughfare), \(locality), \(administrativeArea)"
+        }
     }
 }

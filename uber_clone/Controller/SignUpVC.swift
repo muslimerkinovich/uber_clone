@@ -178,7 +178,7 @@ class SignUpVC: UIViewController {
                     .filter({$0.isKeyWindow}).first else { return }
                 guard let home = keyWindow.rootViewController as? HomeVC else { return }
                 
-                home.setupUI()
+                home.setupVC()
                 self.dismiss(animated: true)
             }
     }

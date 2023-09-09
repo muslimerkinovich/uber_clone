@@ -8,7 +8,8 @@
 import UIKit
 
 protocol LocationInputViewDelegate {
-    func dissmisLocationInputView()
+    func dismissLocationInputView()
+    func executeSearch(query: String)
 }
 
 class LocationInputView: UIView {
@@ -23,7 +24,6 @@ class LocationInputView: UIView {
     }()
     
     // title
-    
     private let titleLbl: UILabel = {
         let label = UILabel()
         label.text = "Tashkent, Uzbekistan"
@@ -33,11 +33,12 @@ class LocationInputView: UIView {
     }()
     
     // from text field
-    
     private let startingLocationTextField: UITextField = {
         let tf = UITextField()
         tf.backgroundColor = .systemGray6
         tf.placeholder = "Current location"
+        tf.returnKeyType = .search
+        tf.isEnabled = false
         tf.layer.cornerRadius = 8
         tf.clipsToBounds = true
         
@@ -51,11 +52,11 @@ class LocationInputView: UIView {
     }()
     
     // to text field
-    
     private let endingLocationTextField: UITextField = {
         let tf = UITextField()
         tf.backgroundColor = .systemGray4
         tf.placeholder = "Enter a destination address..."
+        tf.returnKeyType = .search
         tf.layer.cornerRadius = 8
         tf.clipsToBounds = true
         
@@ -69,7 +70,6 @@ class LocationInputView: UIView {
     }()
     
     // from indicator view
-    
     private let startingIndicatorView: UIView = {
         let view = UIView()
         view.setDimensions(widht: 6, height: 6)
@@ -82,7 +82,6 @@ class LocationInputView: UIView {
     }()
     
     // to indicator view
-    
     private let endingIndicatorView: UIView = {
         let view = UIView()
         view.setDimensions(widht: 6, height: 6)
@@ -95,7 +94,6 @@ class LocationInputView: UIView {
     }()
     
     // indicators linking view
-    
     private let linkingView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 1
@@ -104,6 +102,7 @@ class LocationInputView: UIView {
         
         return view
     }()
+    
     //MARK: - Properties
     
     var delegate: LocationInputViewDelegate?
@@ -117,6 +116,10 @@ class LocationInputView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupViews()
+    }
+    
+    func setupViews() {
         backgroundColor = .white
         addShadow()
         
@@ -145,6 +148,7 @@ class LocationInputView: UIView {
                                          height: 36)
         
         addSubview(endingLocationTextField)
+        endingLocationTextField.delegate = self
         endingLocationTextField.anchor(top: startingLocationTextField.bottomAnchor,
                                        left: startingLocationTextField.leftAnchor,
                                        right: startingLocationTextField.rightAnchor,
@@ -166,6 +170,8 @@ class LocationInputView: UIView {
                            topPadding: 4,
                            bottomPadding: 4,
                            width: 2)
+        
+        endingLocationTextField.becomeFirstResponder()
     }
     
     required init?(coder: NSCoder) {
@@ -178,7 +184,19 @@ class LocationInputView: UIView {
     @objc func handleBackButton() {
         print("Handle back")
         
-        delegate?.dissmisLocationInputView()
+        delegate?.dismissLocationInputView()
     }
     
+}
+
+//MARK: - Text Field Delegate
+
+extension LocationInputView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let query = textField.text else { return false }
+        delegate?.executeSearch(query: query)
+        
+        return true
+    }
 }

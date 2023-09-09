@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import MapKit
 
 class LocationCell: UITableViewCell {
     
     //MARK: - UIProperties
+    
+    var placemark: MKPlacemark? {
+        didSet {
+            titleLabel.text = placemark?.name
+            descriptionLabel.text = placemark?.address
+        }
+    }
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -76,15 +84,8 @@ class LocationCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
-    }
-    
-    func setupCell(title: String, description: String) {
-        
-        titleLabel.text = title
-        descriptionLabel.text = description
-        
     }
 
 }
