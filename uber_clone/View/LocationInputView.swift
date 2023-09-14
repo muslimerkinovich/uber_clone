@@ -43,7 +43,7 @@ class LocationInputView: UIView {
         tf.clipsToBounds = true
         
         let paddingView = UIView()
-        paddingView.setDimensions(widht: 8, height: 8)
+        paddingView.setDimensions(width: 8, height: 8)
         
         tf.leftView = paddingView
         tf.leftViewMode = .always
@@ -61,7 +61,7 @@ class LocationInputView: UIView {
         tf.clipsToBounds = true
         
         let paddingView = UIView()
-        paddingView.setDimensions(widht: 8, height: 8)
+        paddingView.setDimensions(width: 8, height: 8)
         
         tf.leftView = paddingView
         tf.leftViewMode = .always
@@ -72,7 +72,7 @@ class LocationInputView: UIView {
     // from indicator view
     private let startingIndicatorView: UIView = {
         let view = UIView()
-        view.setDimensions(widht: 6, height: 6)
+        view.setDimensions(width: 6, height: 6)
         view.layer.cornerRadius = 2
         view.clipsToBounds = true
         
@@ -84,7 +84,7 @@ class LocationInputView: UIView {
     // to indicator view
     private let endingIndicatorView: UIView = {
         let view = UIView()
-        view.setDimensions(widht: 6, height: 6)
+        view.setDimensions(width: 6, height: 6)
         view.layer.cornerRadius = 2
         view.clipsToBounds = true
         

@@ -28,13 +28,13 @@ class HomeVC: UIViewController {
     private let inputActivationView = LocationInputActivationView()
     private let locationInputView = LocationInputView()
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    private let rideActionView = RideActionView()
     
     private var actionButtonConfig = ActionButtonConfiguration()
     private let actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "menu")?.withRenderingMode(.alwaysOriginal),
                         for: .normal)
-        
         button.addTarget(self,
                          action: #selector(actionButtonPressed),
                          for: .touchUpInside)
@@ -84,6 +84,7 @@ class HomeVC: UIViewController {
                 self.configureActionButton(config: .showMenu)
                 self.removeAnnotationsAndOverlays()
                 self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+                self.configureRideActionView(shouldShow: false)
             }
         }
     }
@@ -177,7 +178,7 @@ class HomeVC: UIViewController {
         inputActivationView.centerX(inView: view,
                                     top: actionButton.bottomAnchor,
                                     topPadding: 24)
-        inputActivationView.setDimensions(widht: view.frame.width - 60,
+        inputActivationView.setDimensions(width: view.frame.width - 60,
                                           height: 50)
         
         inputActivationView.alpha = 0
@@ -235,6 +236,36 @@ class HomeVC: UIViewController {
         }
     }
     
+    func configureRideActionView(shouldShow: Bool, destination: MKPlacemark? = nil) {
+        
+        if shouldShow {
+            view.addSubview(rideActionView)
+            rideActionView.frame = CGRect(x: 0,
+                                          y: view.frame.height,
+                                          width: view.frame.width,
+                                          height: 300)
+            rideActionView.alpha = 0
+            UIView.animate(withDuration: 0.3) { [self] in
+                rideActionView.alpha = 1
+                rideActionView.frame.origin.y = view.frame.height - 300
+            }
+            
+            guard let destination else { return }
+            rideActionView.destination = destination
+        }
+        else {
+            UIView.animate(withDuration: 0.3) { [self] in
+                rideActionView.alpha = 1
+                rideActionView.frame.origin.y = view.frame.height
+            } completion: { _ in
+                self.rideActionView.removeFromSuperview()
+            }
+        }
+        
+        
+        
+        
+    }
     fileprivate func configureActionButton(config: ActionButtonConfiguration) {
         
         switch config {
@@ -341,7 +372,7 @@ private extension HomeVC {
             self.mapView.setVisibleMapRect(polyline.boundingMapRect,
                                            edgePadding: UIEdgeInsets(top: 40,
                                                                      left: 40,
-                                                                     bottom: 240,
+                                                                     bottom: 300,
                                                                      right: 40),
                                            animated: true)
         }
@@ -474,7 +505,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
             
             self.mapView.addAnnotation(annotation)
             self.mapView.selectAnnotation(annotation, animated: true)
-            
+            self.configureRideActionView(shouldShow: true, destination: selectedPlacemark)
 //            let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self)})
 //            self.mapView.showAnnotations(annotations, animated: true)
         }

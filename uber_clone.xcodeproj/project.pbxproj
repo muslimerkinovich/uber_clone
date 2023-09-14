@@ -24,6 +24,7 @@
 		DB5E3CC12AA9AB8C00EC85D2 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */; };
 		DB5E3CC32AA9B03C00EC85D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB5E3CC22AA9B03C00EC85D2 /* GoogleService-Info.plist */; };
 		DBC1B80E2AA9BAA800D83899 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC1B80D2AA9BAA800D83899 /* HomeVC.swift */; };
+		DBFE6AEC2AB31ACD001CC684 /* RideActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFE6AEB2AB31ACD001CC684 /* RideActionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DB5E3CC22AA9B03C00EC85D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DBC1B80D2AA9BAA800D83899 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		DBFE6AEB2AB31ACD001CC684 /* RideActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideActionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				DB5E3CA72AA8F1A700EC85D2 /* LoginVC.swift */,
-				DBC1B80D2AA9BAA800D83899 /* HomeVC.swift */,
 				DB5E3CBE2AA9A17000EC85D2 /* SignUpVC.swift */,
+				DBC1B80D2AA9BAA800D83899 /* HomeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -148,6 +150,7 @@
 				DB2B9C932AAB7F9C0083961B /* LocationInputActivationView.swift */,
 				DB2B9C952AAB87160083961B /* LocationInputView.swift */,
 				DB2B9C972AAB98050083961B /* LocationCell.swift */,
+				DBFE6AEB2AB31ACD001CC684 /* RideActionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				DB2B9C9E2AABA99A0083961B /* LocationManager.swift in Sources */,
 				DB2B9C962AAB87160083961B /* LocationInputView.swift in Sources */,
 				DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */,
+				DBFE6AEC2AB31ACD001CC684 /* RideActionView.swift in Sources */,
 				DB2B9C9C2AABA3D10083961B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

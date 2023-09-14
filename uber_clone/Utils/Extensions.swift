@@ -170,9 +170,9 @@ extension UIView {
         }
     }
     
-    func setDimensions(widht: CGFloat,
+    func setDimensions(width: CGFloat,
                        height: CGFloat) {
-        widthAnchor.constraint(equalToConstant: widht).isActive = true
+        widthAnchor.constraint(equalToConstant: width).isActive = true
         heightAnchor.constraint(equalToConstant: height).isActive = true
     }
     

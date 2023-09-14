@@ -50,7 +50,7 @@ class LocationInputActivationView: UIView {
         indicatorView.centerY(inView: self,
                               left: self.leftAnchor,
                               leftPadding: 16)
-        indicatorView.setDimensions(widht: 6,
+        indicatorView.setDimensions(width: 6,
                                     height: 6)
         
         addSubview(titleLbl)
