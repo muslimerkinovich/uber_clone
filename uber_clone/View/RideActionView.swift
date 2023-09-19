@@ -8,6 +8,10 @@
 import UIKit
 import MapKit
 
+protocol RideActionViewDelegate {
+    func uploadTrip(_ view: RideActionView)
+}
+
 class RideActionView: UIView {
 
     //MARK: - UI Properties
@@ -72,6 +76,8 @@ class RideActionView: UIView {
     }()
     
     //MARK: - Properties
+    
+    var delegate: RideActionViewDelegate?
     
     var destination: MKPlacemark? {
         didSet {
@@ -143,6 +149,6 @@ class RideActionView: UIView {
     }
     
     @objc func confirmPressed() {
-        print("DEBUG: Confirm pressed")
+        delegate?.uploadTrip(self)
     }
 }

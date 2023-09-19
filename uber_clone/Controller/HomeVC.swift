@@ -162,6 +162,7 @@ class HomeVC: UIViewController {
         fetchDrivers()
         
     }
+    
     func setupUI() {
         setupMapView()
         
@@ -240,6 +241,7 @@ class HomeVC: UIViewController {
         
         if shouldShow {
             view.addSubview(rideActionView)
+            rideActionView.delegate = self
             rideActionView.frame = CGRect(x: 0,
                                           y: view.frame.height,
                                           width: view.frame.width,
@@ -266,6 +268,7 @@ class HomeVC: UIViewController {
         
         
     }
+    
     fileprivate func configureActionButton(config: ActionButtonConfiguration) {
         
         switch config {
@@ -301,7 +304,6 @@ class HomeVC: UIViewController {
 }
 
 //MARK: - Location Manager Delegate
-
 extension HomeVC: CLLocationManagerDelegate {
     
     func enableLocationServices() {
@@ -323,7 +325,6 @@ extension HomeVC: CLLocationManagerDelegate {
 }
 
 //MARK: - Map Helper Functions
-
 private extension HomeVC {
     
     func searchBy(query: String, completion: @escaping ([MKPlacemark]) -> Void) {
@@ -391,7 +392,6 @@ private extension HomeVC {
 }
 
 //MARK: - MapView  Delegate
-
 extension HomeVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView,
@@ -423,7 +423,6 @@ extension HomeVC: MKMapViewDelegate {
 }
 
 //MARK: - Location Input Activation View
-
 extension HomeVC: LocationInputActivationViewDelegate {
     
     func presentLocationInputView() {
@@ -434,7 +433,6 @@ extension HomeVC: LocationInputActivationViewDelegate {
 }
 
 //MARK: - Location Input View
-
 extension HomeVC: LocationInputViewDelegate {
     
     func executeSearch(query: String) {
@@ -454,9 +452,7 @@ extension HomeVC: LocationInputViewDelegate {
     }
 }
 
-
 //MARK: - TableView Delegates
-
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -508,6 +504,24 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
             self.configureRideActionView(shouldShow: true, destination: selectedPlacemark)
 //            let annotations = self.mapView.annotations.filter({ !$0.isKind(of: DriverAnnotation.self)})
 //            self.mapView.showAnnotations(annotations, animated: true)
+        }
+    }
+}
+
+//MARK: - RideActionView Delegate
+extension HomeVC: RideActionViewDelegate {
+    
+    func uploadTrip(_ view: RideActionView) {
+        guard let pickupCoordinate = locationManager?.location?.coordinate else { return }
+        guard let destinationCoordinate = view.destination?.coordinate else { return }
+        
+        Service.shared.uploadTrip(pickupCoordinate: pickupCoordinate,
+                                  destinationCoordinate: destinationCoordinate) { error, ref in
+            if let error {
+                print("DEBUG: Error upload trip:", error)
+            }
+            
+            print("DEBUG: Did upload trip successfully")
         }
     }
 }
