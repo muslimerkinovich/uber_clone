@@ -44,15 +44,32 @@ class HomeVC: UIViewController {
     //MARK: - Properties
     
     private let locationManager = LocationManager.shared.locationManager
-
-    private var user: User? {
-        didSet {
-            locationInputView.user = user
-        }
-    }
     
     private var searchResults: [MKPlacemark] = []
     private var route: MKRoute?
+    
+    private var user: User? {
+        didSet {
+            locationInputView.user = user
+            if user?.accountType == .passenger {
+                fetchDrivers()
+                setupLocationInputActivationView()
+            } else {
+                observeTrips()
+            }
+        }
+    }
+      
+    private var trip: Trip? {
+        didSet{
+            print("DEBUG: Show passenger and trip to driver...")
+            guard let trip else { return }
+            let vc = PickupVC(trip: trip)
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
+    }
+
     
     //MARK: - Life Cycle functions
     override func viewDidLoad() {
@@ -153,14 +170,18 @@ class HomeVC: UIViewController {
         }
     }
     
+    func observeTrips() {
+        Service.shared.observeTrips { trip in
+            self.trip = trip
+        }
+    }
+    
     //MARK: - Helper functions
     
     func setupVC() {
         
         setupUI()
         fetchUserData()
-        fetchDrivers()
-        
     }
     
     func setupUI() {
@@ -174,6 +195,10 @@ class HomeVC: UIViewController {
                             width: 32,
                             height: 32)
         
+        setupTableView()
+    }
+    
+    func setupLocationInputActivationView() {
         view.addSubview(inputActivationView)
         inputActivationView.delegate = self
         inputActivationView.centerX(inView: view,
@@ -203,7 +228,9 @@ class HomeVC: UIViewController {
         tableView.rowHeight = 60
         tableView.register(LocationCell.self,
                            forCellReuseIdentifier: LocationCell.identifier)
-        
+    }
+    
+    func showTableView() {
         view.addSubview(tableView)
         
         tableView.frame = CGRect(x: 0,
@@ -427,7 +454,7 @@ extension HomeVC: LocationInputActivationViewDelegate {
     
     func presentLocationInputView() {
         print("present Location Input View")
-        setupTableView()
+        showTableView()
         setupLocationInputView()
     }
 }

@@ -23,6 +23,8 @@
 		DB5E3CBF2AA9A17000EC85D2 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CBE2AA9A17000EC85D2 /* SignUpVC.swift */; };
 		DB5E3CC12AA9AB8C00EC85D2 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */; };
 		DB5E3CC32AA9B03C00EC85D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB5E3CC22AA9B03C00EC85D2 /* GoogleService-Info.plist */; };
+		DB8507F92AB9752400072B77 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8507F82AB9752400072B77 /* Trip.swift */; };
+		DB8507FB2AB9B78700072B77 /* PickupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8507FA2AB9B78700072B77 /* PickupVC.swift */; };
 		DBC1B80E2AA9BAA800D83899 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC1B80D2AA9BAA800D83899 /* HomeVC.swift */; };
 		DBFE6AEC2AB31ACD001CC684 /* RideActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFE6AEB2AB31ACD001CC684 /* RideActionView.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +50,8 @@
 		DB5E3CBE2AA9A17000EC85D2 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		DB5E3CC02AA9AB8C00EC85D2 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DB5E3CC22AA9B03C00EC85D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB8507F82AB9752400072B77 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		DB8507FA2AB9B78700072B77 /* PickupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupVC.swift; sourceTree = "<group>"; };
 		DBC1B80D2AA9BAA800D83899 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		DBFE6AEB2AB31ACD001CC684 /* RideActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideActionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +143,7 @@
 				DB5E3CA72AA8F1A700EC85D2 /* LoginVC.swift */,
 				DB5E3CBE2AA9A17000EC85D2 /* SignUpVC.swift */,
 				DBC1B80D2AA9BAA800D83899 /* HomeVC.swift */,
+				DB8507FA2AB9B78700072B77 /* PickupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			children = (
 				DB2B9C9B2AABA3D10083961B /* User.swift */,
 				DB2B9C9F2AABB4E60083961B /* DriverAnnotation.swift */,
+				DB8507F82AB9752400072B77 /* Trip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8507F92AB9752400072B77 /* Trip.swift in Sources */,
 				DB2B9CA02AABB4E60083961B /* DriverAnnotation.swift in Sources */,
 				DB5E3CBF2AA9A17000EC85D2 /* SignUpVC.swift in Sources */,
 				DB5E3CC12AA9AB8C00EC85D2 /* AuthButton.swift in Sources */,
@@ -292,6 +299,7 @@
 				DB2B9C962AAB87160083961B /* LocationInputView.swift in Sources */,
 				DB5E3CA42AA8F1A700EC85D2 /* AppDelegate.swift in Sources */,
 				DBFE6AEC2AB31ACD001CC684 /* RideActionView.swift in Sources */,
+				DB8507FB2AB9B78700072B77 /* PickupVC.swift in Sources */,
 				DB2B9C9C2AABA3D10083961B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
