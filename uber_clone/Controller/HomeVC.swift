@@ -35,9 +35,6 @@ class HomeVC: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "menu")?.withRenderingMode(.alwaysOriginal),
                         for: .normal)
-        button.addTarget(self,
-                         action: #selector(actionButtonPressed),
-                         for: .touchUpInside)
         return button
     }()
     
@@ -66,6 +63,7 @@ class HomeVC: UIViewController {
             guard let trip else { return }
             let vc = PickupVC(trip: trip)
             vc.modalPresentationStyle = .fullScreen
+            vc.delegate = self
             self.present(vc, animated: true)
         }
     }
@@ -83,6 +81,7 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("DEBUG: Trip state is \(trip!.state)")
     }
 
 
@@ -194,6 +193,9 @@ class HomeVC: UIViewController {
                             leftPadding: 20,
                             width: 32,
                             height: 32)
+        actionButton.addTarget(self,
+                         action: #selector(actionButtonPressed),
+                         for: .touchUpInside)
         
         setupTableView()
     }
@@ -550,5 +552,16 @@ extension HomeVC: RideActionViewDelegate {
             
             print("DEBUG: Did upload trip successfully")
         }
+    }
+}
+
+//MARK: - Pickup Delegate
+extension HomeVC: PickupDelegate {
+    func didAcceptTrip(_ trip: Trip) {
+        Service.shared.acceptTrip(trip) { error, ref in
+            self.trip?.state = .accepted
+            self.dismiss(animated: true)
+        }
+//        self.dismiss(animated: true)
     }
 }

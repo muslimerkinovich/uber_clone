@@ -8,6 +8,11 @@
 import UIKit
 import MapKit
 
+protocol PickupDelegate {
+    
+    func didAcceptTrip(_ trip: Trip)
+}
+
 class PickupVC: UIViewController {
 
     //MARK: - UI Properties
@@ -44,6 +49,7 @@ class PickupVC: UIViewController {
     //MARK: - Properties
     
     var trip: Trip
+    var delegate: PickupDelegate?
     
     init(trip: Trip) {
         self.trip = trip
@@ -70,8 +76,7 @@ class PickupVC: UIViewController {
     }
     
     @objc func acceptPressed() {
-        print("DEBUG: Accept Pressed")
-        dismiss(animated: true)
+        delegate?.didAcceptTrip(trip)
     }
     
     //MARK: - Setup Functions
@@ -124,6 +129,7 @@ class PickupVC: UIViewController {
         let pickupAnnotation = MKPointAnnotation()
         pickupAnnotation.coordinate = trip.pickupCoordinates
         mapView.addAnnotation(pickupAnnotation)
+        mapView.selectAnnotation(pickupAnnotation, animated: true)
     }
     
     //MARK: - Helpers
