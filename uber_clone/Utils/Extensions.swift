@@ -254,7 +254,7 @@ extension UIViewController {
             let indicator = UIActivityIndicatorView()
             indicator.style = .large
             indicator.color = .white
-            indicator.center = view.center
+            indicator.center = loadingView.center
             indicator.startAnimating()
             
             let label = UILabel()
@@ -265,8 +265,8 @@ extension UIViewController {
             label.alpha = 0.87
             
             view.addSubview(loadingView)
-            view.addSubview(indicator)
-            view.addSubview(label)
+            loadingView.addSubview(indicator)
+            loadingView.addSubview(label)
             
             label.centerX(inView: view,
                           top: indicator.bottomAnchor,

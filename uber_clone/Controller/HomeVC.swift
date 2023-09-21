@@ -87,8 +87,6 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("DEBUG: Trip state is \(trip?.state)")
     }
 
 
@@ -188,6 +186,7 @@ class HomeVC: UIViewController {
             
             if trip.state == .accepted {
                 self.shouldPresentLoadingView(false)
+                self.configureRideActionView(shouldShow: true, config: .tripAccepted)
             }
         }
     }
@@ -283,7 +282,7 @@ class HomeVC: UIViewController {
         }
     }
     
-    func configureRideActionView(shouldShow: Bool, destination: MKPlacemark? = nil) {
+    func configureRideActionView(shouldShow: Bool, destination: MKPlacemark? = nil, config: RideActionViewConfiguration? = nil) {
         
         if shouldShow {
             view.addSubview(rideActionView)
@@ -297,9 +296,13 @@ class HomeVC: UIViewController {
                 rideActionView.alpha = 1
                 rideActionView.frame.origin.y = view.frame.height - 300
             }
-            
-            guard let destination else { return }
-            rideActionView.destination = destination
+
+            if destination != nil {
+                rideActionView.destination = destination
+            }
+            if config != nil {
+                rideActionView.configureView(withConfig: config!)
+            }
         }
         else {
             UIView.animate(withDuration: 0.3) { [self] in
@@ -567,10 +570,7 @@ extension HomeVC: RideActionViewDelegate {
             if let error {
                 print("DEBUG: Error upload trip:", error)
             }
-            
-            UIView.animate(withDuration: 0.3) {
-                self.rideActionView.frame.origin.y = self.view.frame.height
-            }
+            self.configureRideActionView(shouldShow: false)
         }
     }
 }
@@ -579,9 +579,19 @@ extension HomeVC: RideActionViewDelegate {
 extension HomeVC: PickupDelegate {
     func didAcceptTrip(_ trip: Trip) {
         Service.shared.acceptTrip(trip) { error, ref in
+            
+            let pickupAnnotation = MKPointAnnotation()
+            pickupAnnotation.coordinate = trip.pickupCoordinates
+            self.mapView.addAnnotation(pickupAnnotation)
+            let placeMark = MKPlacemark(coordinate: trip.pickupCoordinates)
+            let mapItem = MKMapItem(placemark: placeMark)
+            
+            self.generateRoute(toDestination: mapItem)
+            
             self.trip?.state = .accepted
-            self.dismiss(animated: true)
+            self.dismiss(animated: true) {
+                self.configureRideActionView(shouldShow: true, config: .tripAccepted)
+            }
         }
-//        self.dismiss(animated: true)
     }
 }

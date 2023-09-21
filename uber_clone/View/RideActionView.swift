@@ -12,6 +12,47 @@ protocol RideActionViewDelegate {
     func uploadTrip(_ view: RideActionView)
 }
 
+enum RideActionViewConfiguration {
+    case requestRide
+    case tripAccepted
+    case pickupPassenger
+    case tripInProgress
+    case endTrip
+    
+    init() {
+        self = .requestRide
+    }
+}
+
+enum ButtonAction {
+    
+    case requestRide
+    case cancel
+    case getDirection
+    case pickUp
+    case dropOff
+    
+    var description: String {
+        switch self {
+        case .requestRide:
+            return "CONRIRM UBERX"
+        case .cancel:
+            return "CANCEL RIDE"
+        case .getDirection:
+            return "GET DIRECTION"
+        case .pickUp:
+            return "PICK UP PASSENGER"
+        case .dropOff:
+            return "DROP OFF PASSENGER"
+        }
+    }
+    
+    init() {
+        self = .requestRide
+    }
+    
+}
+
 class RideActionView: UIView {
 
     //MARK: - UI Properties
@@ -77,6 +118,8 @@ class RideActionView: UIView {
     
     //MARK: - Properties
     
+    var config = RideActionViewConfiguration()
+    var buttonAction = ButtonAction()
     var delegate: RideActionViewDelegate?
     
     var destination: MKPlacemark? {
@@ -139,7 +182,7 @@ class RideActionView: UIView {
                              bottom: safeAreaLayoutGuide.bottomAnchor,
                              right: rightAnchor,
                              topPadding: 12,
-                             leftPadding: 30,
+                             leftPadding: 30, 
                              bottomPadding: 12,
                              rightPadding: 30)
     }
@@ -150,5 +193,25 @@ class RideActionView: UIView {
     
     @objc func confirmPressed() {
         delegate?.uploadTrip(self)
+    }
+    
+    //MARK: - Helper Functions
+    
+    func configureView(withConfig config: RideActionViewConfiguration) {
+        
+        switch config {
+        case .requestRide:
+            break
+        case .tripAccepted:
+            titleLabel.text = "En route to Passenger"
+            buttonAction = .getDirection
+            confirmButton.setTitle(buttonAction.description, for: .normal)
+        case .pickupPassenger:
+            break
+        case .tripInProgress:
+            break
+        case .endTrip:
+            break
+        }
     }
 }
